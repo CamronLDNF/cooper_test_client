@@ -54,4 +54,8 @@ describe("HomePage", () => {
     expect(homepage.calculate).toBeTruthy();
   });
 
+  it("should have user array default values", () => {
+    expect(homepage.user).toEqual({ distance: 1000, age: 20 });
+  });
+
 });
