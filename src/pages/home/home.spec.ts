@@ -37,6 +37,7 @@ describe("HomePage", () => {
     expect(homepage.user).toEqual({ distance: 1000, age: 20 });
   });
 
+  // do we still need the below function if replicated further down?
   it('should have calculate function', () => {
     spyOn(homepage, 'calculate'); // we use jasmine to spy on a function
 
@@ -44,4 +45,13 @@ describe("HomePage", () => {
 
     expect(homepage.calculate).toHaveBeenCalled(); // check if the function has been called
   });
+
+  it("should have user array", () => {
+    expect(homepage.user).toEqual({});
+  });
+
+  it("should have calculate function", () => {
+    expect(homepage.calculate).toBeTruthy();
+  });
+
 });
