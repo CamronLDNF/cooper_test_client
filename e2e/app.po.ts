@@ -15,12 +15,9 @@ export class Page {
   }
 
   fillInForm(distance, gender, age) {
-    browser.ignoreSynchronization = true;
-    // element(by.css('.text-input')).sendKeys(browser.Key.BACK_SPACE);
-    browser.sleep(1000)
-    element(by.css('.text-input')).clear().then(() => {  // first we need to clear the default value
-    element(by.css('.text-input')).sendKeys(distance); // fill in the distance
-    }) 
+    // element(by.css('.text-input')).clear().then(() => {  // first we need to clear the default value
+    // element(by.css('.text-input')).sendKeys(distance); // fill in the distance
+    // }) 
 
     element(by.css('.select')).click().then(() => {  // find the dropdown and click on it
       browser.sleep(500); // we sleep for a half a second to make sure the popup has popped up
