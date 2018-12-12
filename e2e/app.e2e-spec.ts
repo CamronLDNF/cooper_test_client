@@ -18,10 +18,5 @@ describe('App', () => {
       expect(page.results_card_content()).toContain('Gender: female, Age: 20  Result: Poor');
     });
     
-    // it('should have a title saying Page One', () => {
-    //   page.getPageOneTitleText().then(title => {
-    //     expect(title).toEqual('Page One');
-    //   });
-    // });
   })
 });
