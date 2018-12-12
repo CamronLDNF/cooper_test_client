@@ -91,8 +91,56 @@ export class MyApp {
   logout() {
     this._tokenService
       .signOut()
-      .subscribe(res => console.log(res), err => console.error('error'));
+      .subscribe(
+        res => console.log(res), 
+        err => console.error('error'));
     this.currentUser = undefined;
+  }
+
+  registerPopUp() {
+    console.log('popup');
+    let confirm = this.alertCtrl.create({
+      title: 'Register',
+      inputs: [
+        {
+          name: 'email',
+          placeholder: 'email'
+        },
+        {
+          name: 'password',
+          placeholder: 'password',
+          type: 'password'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Register',
+          handler: data => {
+            this.register(data);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  register() {
+    this._tokenService
+      .registerAccount({
+      email:                'example@example.org',
+      password:             'secretPassword',
+      passwordConfirmation: 'secretPassword'
+      })
+      .subscribe(
+      res =>      console.log(res),
+      error =>    console.log(error)
+      );
   }
   
 }
