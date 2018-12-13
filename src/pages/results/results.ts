@@ -63,4 +63,13 @@ export class ResultsPage {
       });
   }
 
+  chartClicked(event: any): void {
+    console.log(event);
+  }
+
+  chartHovered(event: any): void {
+    console.log(event);
+  }
+
+
 }
