@@ -16,6 +16,8 @@ import { PerformanceDataProvider } from '../providers/performance-data/performan
 import { HttpModule } from '@angular/http';
 import { ResultsPage } from '../pages/results/results';
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -27,6 +29,7 @@ import { ResultsPage } from '../pages/results/results';
     IonicModule.forRoot(MyApp),
     HttpModule,
     RouterModule,
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
