@@ -25,10 +25,12 @@ export class HomePage {
       this.person.age = user.age;
       this.person.gender = user.gender;
       this.person.doAssessment(user.distance);
+    }
+      //create a save function and wrap the below in it. In home.html, that button will link to this.
       this.performanceData
         .saveData({ performance_data: { data: { message: this.person.assessmentMessage } } })
         .subscribe(data => console.log(data));
-    }
+
 
     showResults() {
       this.modalCtrl.create(ResultsPage).present();

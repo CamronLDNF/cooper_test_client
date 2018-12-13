@@ -1,4 +1,3 @@
-import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
 
@@ -14,11 +13,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { PersonProvider } from '../providers/person/person';
 import { CooperProvider } from '../providers/cooper/cooper';
 import { PerformanceDataProvider } from '../providers/performance-data/performance-data';
+import { HttpModule } from '@angular/http';
+import { ResultsPage } from '../pages/results/results';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    ResultsPage
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { PerformanceDataProvider } from '../providers/performance-data/performan
   entryComponents: [
     MyApp,
     HomePage,
+    ResultsPage
   ],
   providers: [
     StatusBar,
@@ -38,7 +41,7 @@ import { PerformanceDataProvider } from '../providers/performance-data/performan
     PersonProvider,
     CooperProvider,
     Angular2TokenService,
-    PerformanceDataProvider
+    PerformanceDataProvider,
   ]
 })
 export class AppModule {}

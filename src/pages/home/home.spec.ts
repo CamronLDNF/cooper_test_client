@@ -6,6 +6,10 @@ import { SplashScreen } from "@ionic-native/splash-screen";
 import { PlatformMock, StatusBarMock, SplashScreenMock, NavControllerMock } from "ionic-mocks";
 import { PersonProvider } from '../../providers/person/person';
 import { CooperProvider } from "../../providers/cooper/cooper";
+import { PerformanceDataProvider } from "../../providers/performance-data/performance-data";
+import { Angular2TokenService } from 'angular2-token';
+import { BaseRequestOptions, Http } from "@angular/http";
+import { MockBackend } from "@angular/http/testing";
 
 describe("HomePage", () => {
   let fixture, homepage;
@@ -17,12 +21,23 @@ describe("HomePage", () => {
       ],
       imports: [IonicModule.forRoot(HomePage)],
       providers: [
+        BaseRequestOptions,
+        MockBackend,
+        {
+          provide: Http,
+          useFactory: (backend, defaultOptions) => {
+            return new Http(backend, defaultOptions)
+          },
+          deps: [MockBackend, BaseRequestOptions]
+        },
         { provide: Platform, useFactory: () => PlatformMock.instance() },
         { provide: StatusBar, useFactory: () => StatusBarMock.instance() },
         { provide: SplashScreen, useFactory: () => SplashScreenMock.instance() },
         { provide: NavController, useFactory: () => NavControllerMock.instance() },
         PersonProvider,
-        CooperProvider
+        CooperProvider,
+        PerformanceDataProvider,
+        Angular2TokenService
       ]
     }).compileComponents();
   }));
@@ -51,12 +66,15 @@ describe("HomePage", () => {
   });
 
   it("calculate function should call person provider doAssessment function", inject(
-    [PersonProvider],
-    person => {
-      homepage.user = { age: 25, gender: "female", distance: 2500 };
+    [PersonProvider, Angular2TokenService],
+    (person, _tokenService) => {
+      _tokenService.init({
+        apiBase: 'https://camron-cooper-api.herokuapp.com/api/v1'
+      });  
+      let user = { age: 25, gender: "female", distance: 2500 };
       spyOn(person, "doAssessment").and.returnValue("Above average");
   
-      homepage.calculate();
+      homepage.calculate(user);
   
       expect(person.doAssessment).toHaveBeenCalled();
       expect(person.doAssessment).toHaveBeenCalledWith(2500);

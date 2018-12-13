@@ -82,7 +82,7 @@ describe('AppComponent', () => {
     mockBackend.connections.subscribe(
       c => {
         expect(c.request.method).toEqual(RequestMethod.Post);
-        expect(c.request.url).toEqual('https://camron-cooper-api.herokuapp.com/api/v1/auth/sign_up');
+        expect(c.request.url).toEqual('https://camron-cooper-api.herokuapp.com/api/v1/auth');
       }
     );
 
