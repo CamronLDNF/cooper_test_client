@@ -15,9 +15,6 @@ export class Page {
   }
 
   fillInForm(distance, gender, age) {
-    // element(by.css('.text-input')).clear().then(() => {  // first we need to clear the default value
-    // element(by.css('.text-input')).sendKeys(distance); // fill in the distance
-    // }) 
 
     element(by.css('.select')).click().then(() => {  // find the dropdown and click on it
       browser.sleep(500); // we sleep for a half a second to make sure the popup has popped up
