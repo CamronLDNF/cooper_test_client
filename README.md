@@ -17,7 +17,7 @@ Testing the app:
 -------
 1. Download the app folder
 2. Open the app folder in your CLI
-3. Run `'npm' install` to install all packages
+3. Run `npm install` to install all packages
 4. Run `ionic serve --lab` to launch the app in your browser
 
 ## How to run the test suite
